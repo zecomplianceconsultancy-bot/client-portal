@@ -62,8 +62,9 @@ body.light .bench-table td:first-child{color:#1a2540}
 body.light .bench-table tbody tr:hover{background:rgba(160,124,46,.05)}
 body.light .opt-tabs{border-color:rgba(160,124,46,.22)}
 body.light .opt-panel{background:rgba(255,255,255,.75);border-color:rgba(160,124,46,.2)}
-body.light .opt-tab{color:#7a90b8}
-body.light .opt-tab.on{color:var(--gold);background:rgba(201,168,76,.06)}
+body.light .opt-tab{color:#7a90b8;background:rgba(201,168,76,.03);border-color:rgba(160,124,46,.18)}
+body.light .opt-tab:hover{color:#1a2540;background:rgba(201,168,76,.08)}
+body.light .opt-tab.on{color:var(--gold);background:rgba(201,168,76,.1);border-color:rgba(201,168,76,.45)}
 body.light .del-card{background:rgba(240,245,255,.9)}
 body.light .del-t{color:var(--gold3)}
 body.light .del-d{color:#4a6088}
@@ -282,11 +283,13 @@ body{font-family:'Montserrat',sans-serif;background:var(--navy);color:var(--whit
 .bench-table td{padding:12px 14px;color:var(--muted);line-height:1.5}
 .bench-table td:first-child{color:var(--white);font-weight:600}
 /* option tabs */
-.opt-tabs{display:flex;border-bottom:1px solid var(--bord);margin-bottom:0}
-.opt-tab{padding:14px 32px;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border:1px solid transparent;border-bottom:none;margin-bottom:-1px;color:var(--muted);transition:all .25s;font-family:'Montserrat',sans-serif;user-select:none}
-.opt-tab:hover{color:var(--white)}
-.opt-tab.on{color:var(--gold);border-color:var(--bord);border-bottom-color:var(--navy);background:rgba(201,168,76,.04)}
-.opt-rec{display:inline-block;padding:2px 7px;background:var(--gold);color:var(--navy);font-size:.5rem;font-weight:800;letter-spacing:.1em;margin-left:8px;vertical-align:middle}
+.opt-tabs{display:flex;gap:12px;margin-bottom:0;padding:0 0 24px 0;border-bottom:1px solid var(--bord);position:relative;margin-top:18px}
+.opt-tab{flex:1;padding:18px 24px;font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.04);color:var(--muted);transition:all .3s;font-family:'Montserrat',sans-serif;user-select:none;position:relative;text-align:center;border-radius:2px}
+.opt-tab::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:transparent;transition:background .3s}
+.opt-tab:hover{color:var(--white);border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.07)}
+.opt-tab.on{color:var(--gold);border-color:rgba(201,168,76,.5);background:rgba(201,168,76,.1);box-shadow:0 4px 24px rgba(201,168,76,.08)}
+.opt-tab.on::before{background:var(--gold)}
+.opt-rec{display:inline-block;padding:3px 9px;background:var(--gold);color:var(--navy);font-size:.52rem;font-weight:900;letter-spacing:.12em;margin-left:10px;vertical-align:middle;border-radius:1px;animation:pulse 2.5s infinite}
 .opt-panel{display:none;padding:40px 36px;border:1px solid var(--bord);border-top:none;background:rgba(8,18,36,.7);animation:fadeSlide .4s ease}
 .opt-panel.on{display:block}
 @keyframes fadeSlide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
@@ -371,7 +374,6 @@ body.light .reg-box strong{color:#3060a0}
 .stat-cell .n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--gold);line-height:1}
 .stat-cell .l{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:4px}
 body.light .stat-cell{background:rgba(255,255,255,.7)}
-body.light .opt-tab.on{border-bottom-color:#edf1f8}
 body.light .p-intro strong{color:#1a2540}
 body.light .dl-band h3{color:#1a2540}
 body.light .dl-band p{color:#4a6088}
@@ -535,7 +537,7 @@ body.light #s-cv{background:#edf1f8}
       <div class="d-title">Senior Financial Economic Crime &amp; Compliance Consultant</div>
       <p class="d-desc">17+ years of hands-on AML/CFT programme delivery across Dutch systemically important institutions and development finance — spanning the full implementation spectrum from risk appetite design and CDD/EDD architecture to Big Four outsourcing management and Board-level programme reporting. <strong>Built for institutions where complexity is not the exception, but the operational norm.</strong></p>
       <div class="d-counters">
-        <div><div class="d-cnt-n" data-target="17">0</div><div class="d-cnt-l">Years in FEC</div></div>
+        <div><div class="d-cnt-n" data-target="17">0</div><div class="d-cnt-l">Years in Banking</div></div>
         <div style="width:1px;background:var(--bord)"></div>
         <div><div class="d-cnt-n" data-target="5">0</div><div class="d-cnt-l">Major Institutions</div></div>
         <div style="width:1px;background:var(--bord)"></div>
@@ -707,6 +709,7 @@ body.light #s-cv{background:#edf1f8}
       <p class="p-intro" style="margin-bottom:28px">Two options are presented below. <strong>Option A is strongly recommended</strong> — it reflects the approach taken by every comparable institution that has successfully navigated a major regulatory transition. Option B is available where internal capacity is confirmed sufficient; its limitations relative to the complexity of this engagement are clearly set out below.</p>
 
       <div class="opt-tabs">
+        <div style="position:absolute;right:0;top:-22px;font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600">↓ Select an option to view</div>
         <div class="opt-tab on" onclick="switchTab('a')">Option A — Full Programme Oversight <span class="opt-rec">STRONGLY RECOMMENDED</span></div>
         <div class="opt-tab" onclick="switchTab('b')">Option B — Minimum Scoped Delivery</div>
       </div>
@@ -765,12 +768,13 @@ body.light #s-cv{background:#edf1f8}
         </div>
 
         <div class="fee-cap">
-          <div class="fee-grid">
+          <div class="fee-grid" style="grid-template-columns:repeat(4,1fr)">
             <div class="fee-m"><div class="val">€22k</div><div class="lbl">Maximum Fee</div></div>
+            <div class="fee-m"><div class="val">120</div><div class="lbl">Maximum Hours</div></div>
             <div class="fee-m"><div class="val">4</div><div class="lbl">Core Deliverables</div></div>
             <div class="fee-m"><div class="val">AMLR</div><div class="lbl">Changes Only</div></div>
           </div>
-          <div class="fee-note"><strong>Scope protection:</strong> All work commences against a jointly agreed scope document. Should discovery reveal that the existing documents require revision beyond what AMLR directly requires, this will be discussed with Invest International — and no additional work will be undertaken without agreement.</div>
+          <div class="fee-note"><strong>Scope protection:</strong> All work commences against a jointly agreed scope document. Should discovery reveal that the existing documents require revision beyond what AMLR directly requires, this will be discussed with Invest International — and no additional work will be undertaken without agreement. <strong>The 120-hour ceiling is absolute.</strong></div>
         </div>
 
         <table class="scope-tbl">
